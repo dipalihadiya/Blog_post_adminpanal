@@ -42,7 +42,7 @@ const forgotPasswordController = async (req, res) => {
         await userModel.updateOne({ _id: user._id }, { resetToken: token });
 
         console.log("user found");
-        let link = `http://localhost:3017/cnfirmOTP//${user.id}`;
+        let link = `http://localhost:3017/confirmOTP/${user.id}`;
         console.log("RESET LINK >>>", link);
 
         const generateOtp = {
@@ -81,7 +81,7 @@ const confirmOTP = async (req, res) => {
     console.log("Reset Password", req.params.id);
 
     try {
-        const user = await userModel.indOne({ _id: req.params.id });
+        const user = await userModel.findOne({ _id: req.params.id });
 
         console.log("user", user);
         if (user) {
@@ -106,8 +106,10 @@ const confirmOTP = async (req, res) => {
 const resetPasswordController = async (req, res) => {
     const id = req.params.id;
     console.log("reset Password", id);
-    const { new_password, conf_password } = req.body;
-    if (new_password == conf_password) {
+    const { new_password, con_password } = req.body;
+    console.log("new pass", new_password, "con pass", con_password);
+    
+    if (new_password == con_password) {
         bcrypt.hash(new_password, 10, async (err, hashPassword) => {
             if (err) {
                 console.log("Error in hashing password", err);

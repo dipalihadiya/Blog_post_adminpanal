@@ -36,6 +36,7 @@ router.get('/otp/:id', authContoller.otp);
 router.post('/confirmOTP/:id', authContoller.confirmOTP);
 router.get('/confirmOTP/:id', authContoller.confirmOTP);
 router.post('/resetPasswordController/:id', authContoller.resetPasswordController);
+router.get('/resetPasswordController/:id', authContoller.resetPasswordController);
 
 
 // Topic routes
