@@ -69,7 +69,7 @@ Follow these steps to set up the project locally:
    ```
 
 6. **Access the app**:
-   Open your browser and visit `http://localhost:3000`.
+   Open your browser and visit `http://localhost:3017`.
 
 ## Usage
 
